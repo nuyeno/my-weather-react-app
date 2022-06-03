@@ -1,0 +1,51 @@
+.current-forecast .temp-now {
+  border: 1px solid #e5e5e5;
+  border-radius: 35px;
+  background: white;
+  max-width: 80%;
+  text-align: center;
+}
+
+.current-weather-description {
+  font-size: 25px;
+}
+
+.current-weather-icon {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+
+.weather-icon {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  font-size: 60px;
+}
+
+.temp-now {
+  border: 1px solid #e5e5e5;
+  border-radius: 35px;
+  background: white;
+  max-width: 80%;
+}
+
+.units {
+  font-size: 18px;
+  position: relative;
+  top: -10px;
+  padding: none;
+}
+.units .active {
+  color: black;
+  text-decoration: none;
+}
+.celsius {
+  text-decoration: none;
+}
+.details {
+  font-family: "Playfair Display", serif;
+  font-size: 15px;
+  list-style: none;
+  padding: 30px;
+}
