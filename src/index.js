@@ -1,15 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import CurrentForecast from "./CurrentForecast";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
     <CurrentForecast />
+    <footer>
+      <a href="https://silly-axolotl-04abeb.netlify.app" target="_blank">
+        Open-source code
+      </a>{" "}
+      by Naomi Uyeno
+    </footer>
   </React.StrictMode>
 );
 
