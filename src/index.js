@@ -9,7 +9,7 @@ root.render(
   <React.StrictMode>
     <CurrentForecast />
     <footer>
-      <a href="https://silly-axolotl-04abeb.netlify.app" target="_blank">
+      <a href="https://github.com/nuyeno/my-weather-react-app" target="_blank">
         Open-source code
       </a>{" "}
       by Naomi Uyeno
