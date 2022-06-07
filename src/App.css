@@ -1,15 +1,32 @@
-.search-city {
-  margin: 10px auto;
-  padding: 5px;
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  margin: 0 auto;
+}
+
+body {
+  background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+  background-attachment: fixed;
+}
+
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Playfair Display", serif;
+}
+h2,
+h3 {
+  font-size: 35px;
+  text-align: center;
+}
+h5 {
   text-align: left;
-  border: 1px solid #e5e5e5;
-  border-radius: 20px;
-  background: white;
-  max-width: 60%;
+  padding: 20px 0px 0px 0px;
+  font-size: 25px;
+  margin: 0 auto;
 }
-.search-button {
-  margin: 10px 20px;
-}
-.current-location {
-  margin-left: 10px 20px;
+footer {
+  font-family: "Playfair Display", serif;
+  font-size: 12px;
 }

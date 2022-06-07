@@ -1,48 +1,18 @@
-import "./App.css";
 import React from "react";
+import ReactDOM from "react-dom/client";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.css";
 import CurrentForecast from "./CurrentForecast";
 
-function App() {
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
-  return (
-    <div className="weather-search">
-      <div className="container">
-        <div className="app-wrapper">
-          <div className="card-search search-city">
-            <div className="card-body">
-              <span className="col-6">
-                <form onSubmit={handleSubmit}>
-                  <input
-                    type="search"
-                    placeholder="Enter a city"
-                    autofocus="on"
-                    autoComplete="off"
-                    value={CurrentForecast.city}
-                  />
-                  <span className="col-3 search-button">
-                    <input
-                      className="btn btn-primary"
-                      type="submit"
-                      value="🔎 Search"
-                    />
-                  </span>
-                  <span className="col-3 current-location">
-                    <input
-                      className="btn btn-primary"
-                      type="submit"
-                      value="📍 Current"
-                    />
-                  </span>
-                </form>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export default App;
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <CurrentForecast />
+    <footer>
+      <a href="https://github.com/nuyeno/my-weather-react-app" target="_blank">
+        Open-source code
+      </a>{" "}
+      by Naomi Uyeno
+    </footer>
+  </React.StrictMode>
+);
