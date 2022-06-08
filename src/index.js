@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "bootstrap/dist/css/bootstrap.css";
 import "./index.css";
-import 'bootstrap/dist/css/bootstrap.css';
+import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <CurrentForecast />
+    <App />
     <footer>
       <a href="https://github.com/nuyeno/my-weather-react-app" target="_blank">
         Open-source code
