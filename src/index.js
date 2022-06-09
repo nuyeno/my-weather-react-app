@@ -9,7 +9,11 @@ root.render(
   <React.StrictMode>
     <App />
     <footer>
-      <a href="https://github.com/nuyeno/my-weather-react-app" target="_blank">
+      <a
+        href="https://github.com/nuyeno/my-weather-react-app"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Open-source code
       </a>{" "}
       by Naomi Uyeno
