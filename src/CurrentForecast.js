@@ -4,26 +4,26 @@ import axios from "axios";
 
 export default function CurrentForecast() {
   const [city, setCity] = useState(" ");
-  const [temperature, setTemperature] = useState(" ");
-  const [description, setDescription] = useState(" ");
-  const [humidity, setHumidity] = useState(" ");
-  const [wind, setWind] = useState(" ");
-  const [icon, setIcon] = useState(" ");
+  const [weather, setWeather] = useState({});
 
+function showWeather(response) {
+  setWeather({
+    temperature: Math.round(response.data.main.temp),
+    description: response.data.weather[0].main,
+    humidity: response.data.main.humidity,
+    wind: Math.round(response.data.wind.speed),
+    icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  });
+    }
   function handleSubmit(event) {
     event.preventDefault();
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=b28f15f03c06aa01b59bd379d3000b9a&units=imperial`;
+    axios.get(url).then(showWeather);
   }
-  function showWeather(response) {
-    setTemperature(Math.round(response.data.main.temp));
-    setDescription(response.data.weather[0].main);
-    setHumidity(response.data.main.humidity);
-    setWind(Math.round(response.data.wind.speed));
-    setIcon(
-      `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-    );
+  function updateCity(event) {
+    setCity(event.target.value);
+
   }
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=b28f15f03c06aa01b59bd379d3000b9a&units=imperial`;
-  axios.get(url).then(showWeather);
 
   return (
     <div className="current-forecast">
@@ -39,7 +39,7 @@ export default function CurrentForecast() {
                     autofocus="on"
                     autoComplete="off"
                     value={CurrentForecast.city}
-                    onChange={(e) => setCity(e.target.value)}
+                    onChange={updateCity}
                   />
                   <span className="col-3 search-button">
                     <input
@@ -65,7 +65,7 @@ export default function CurrentForecast() {
         <br />
         <h2>
           <div>{city}</div>
-          <span className="temperature">{temperature}</span>
+          <span className="temperature">{weather.temperature}</span>
           <span className="units">
             <a href="/" className="active">
               °F
@@ -80,17 +80,17 @@ export default function CurrentForecast() {
           <div className="row align-items-center">
             <div className="col-4">
               <ul className="details">
-                <li>Humidity: {humidity}%</li>
-                <li>Wind speed: {wind} mph</li>
+                <li>Humidity: {weather.humidity}%</li>
+                <li>Wind speed: {weather.wind} mph</li>
               </ul>
             </div>
             <div className="col-4 current-weather-icon">
-              <img src={icon} alt="weather-icon" />
+              <img src={weather.icon} alt="weather-icon" />
             </div>
             <div className="col-4 current-weather-description">
               <ul className="details">
                 <li>Last updated: </li>
-                <li>{description}</li>
+                <li>{weather.description}</li>
               </ul>
             </div>
           </div>
