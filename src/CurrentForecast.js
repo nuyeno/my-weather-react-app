@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Current-Forecast.css";
+import FormalDate from "./FormalDate";
 import axios from "axios";
 
 export default function CurrentForecast() {
@@ -13,6 +14,7 @@ function showWeather(response) {
     description: response.data.weather[0].main,
     humidity: response.data.main.humidity,
     wind: Math.round(response.data.wind.speed),
+    date: new Date(response.data.dt * 1000),
     icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   })
   setLoading(true);
@@ -96,7 +98,7 @@ if (loading) {
             </div>
             <div className="col-4 current-weather-description">
               <ul className="details">
-                <li>Last updated: </li>
+                <li>Last updated: <FormalDate date={weather.date} /></li>
                 <li>{weather.description}</li>
               </ul>
             </div>
