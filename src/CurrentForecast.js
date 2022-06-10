@@ -5,6 +5,7 @@ import axios from "axios";
 export default function CurrentForecast() {
   const [city, setCity] = useState(" ");
   const [weather, setWeather] = useState({});
+  const [loading, setLoading] = useState(false);
 
 function showWeather(response) {
   setWeather({
@@ -13,18 +14,24 @@ function showWeather(response) {
     humidity: response.data.main.humidity,
     wind: Math.round(response.data.wind.speed),
     icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  });
+  })
+  setLoading(true);
     }
   function handleSubmit(event) {
     event.preventDefault();
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=b28f15f03c06aa01b59bd379d3000b9a&units=imperial`;
-    axios.get(url).then(showWeather);
+    search();
   }
   function updateCity(event) {
     setCity(event.target.value);
 
   }
+  function search() {
+    let city = "Honolulu"
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=b28f15f03c06aa01b59bd379d3000b9a&units=imperial`;
+    axios.get(url).then(showWeather);
+  }
 
+if (loading) {
   return (
     <div className="current-forecast">
       <div className="container">
@@ -98,4 +105,9 @@ function showWeather(response) {
       </div>
     </div>
   );
+  } else { 
+  search();
+    return (    
+    "Searching for data...")
+  }
 }

@@ -42,7 +42,7 @@
   border: 1px solid #e5e5e5;
   border-radius: 35px;
   background: white;
-  max-width: 80%;
+  margin: 20px 60px 5px 100px;
 }
 
 .units {
@@ -63,4 +63,5 @@
   font-size: 15px;
   list-style: none;
   padding: 30px;
+  text-align: left;
 }
