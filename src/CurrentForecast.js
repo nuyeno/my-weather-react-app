@@ -3,8 +3,9 @@ import "./Current-Forecast.css";
 import FormalDate from "./FormalDate";
 import axios from "axios";
 import WeatherIcon from "./WeatherIcon";
+import CurrentTemperature from "./CurrentTemperature";
 
-export default function CurrentForecast() {
+export default function CurrentForecast(props) {
   const [city, setCity] = useState(" ");
   const [weather, setWeather] = useState({});
   const [loading, setLoading] = useState(false);
@@ -25,6 +26,7 @@ export default function CurrentForecast() {
     search();
   }
   function updateCity(event) {
+    event.preventDefault();
     setCity(event.target.value);
   }
   function search() {
@@ -40,7 +42,7 @@ export default function CurrentForecast() {
           <div className="app-wrapper">
             <div className="card-search search-city">
               <div className="card-body">
-                <span className="col-6">
+                <span className="col-9">
                   <form onSubmit={handleSubmit}>
                     <input
                       type="search"
@@ -55,13 +57,6 @@ export default function CurrentForecast() {
                         className="btn btn-primary"
                         type="submit"
                         value="🔎 Search"
-                      />
-                    </span>
-                    <span className="col-3 current-location">
-                      <input
-                        className="btn btn-primary"
-                        type="submit"
-                        value="📍 Current"
                       />
                     </span>
                   </form>
@@ -84,16 +79,8 @@ export default function CurrentForecast() {
                 <span className="current-weather-icon float-left">
                   <WeatherIcon code={weather.icon} />
                 </span>
-                <span className="temperature">{weather.temperature}</span>
-                <span className="units">
-                  <a href="/" className="active">
-                    °F
-                  </a>
-                  |
-                  <a href="/" className="celsius">
-                    °C
-                  </a>
-                </span>
+                <CurrentTemperature fahrenheit={weather.temperature} />
+                
               </div>
               <div className="col-6 current-weather-description">
                 <ul className="details">

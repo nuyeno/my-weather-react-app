@@ -33,6 +33,9 @@
   text-align: left;
   margin-left: 0;
   margin-right: 10px;
+  position: relative;
+  left: -20px;
+  bottom: -15px;
 }
 
 .temp-now {
@@ -47,7 +50,7 @@
   list-style: none;
 }
 .current-forecast .temperature {
-font-size: 46px;
+  font-size: 46px;
 }
 .units {
   font-size: 18px;
