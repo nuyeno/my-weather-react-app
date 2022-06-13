@@ -6,7 +6,7 @@ import WeatherIcon from "./WeatherIcon";
 import CurrentTemperature from "./CurrentTemperature";
 
 export default function CurrentForecast(props) {
-  const [city, setCity] = useState(" ");
+  const [city, setCity] = useState(props.defaultCity);
   const [weather, setWeather] = useState({});
   const [loading, setLoading] = useState(false);
 
@@ -17,7 +17,8 @@ export default function CurrentForecast(props) {
       humidity: response.data.main.humidity,
       wind: Math.round(response.data.wind.speed),
       date: new Date(response.data.dt * 1000),
-      icon: response.data.weather[0].icon
+      icon: response.data.weather[0].icon,
+      cityName: response.data.name,
     });
     setLoading(true);
   }
@@ -30,7 +31,6 @@ export default function CurrentForecast(props) {
     setCity(event.target.value);
   }
   function search() {
-    let city = "Honolulu";
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=b28f15f03c06aa01b59bd379d3000b9a&units=imperial`;
     axios.get(url).then(showWeather);
   }
@@ -47,7 +47,7 @@ export default function CurrentForecast(props) {
                     <input
                       type="search"
                       placeholder="Enter a city"
-                      autofocus="on"
+                      autoFocus="on"
                       autoComplete="off"
                       value={CurrentForecast.city}
                       onChange={updateCity}
@@ -66,7 +66,7 @@ export default function CurrentForecast(props) {
           </div>
           <div className="temp-now">
             <h1>
-              <div className="city-searched text-capitalize">{city}</div>
+              <div className="city-searched text-capitalize">{weather.cityName}</div>
             </h1>
             <ul>
               <li>
