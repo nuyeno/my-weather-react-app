@@ -4,6 +4,7 @@ import FormalDate from "./FormalDate";
 import axios from "axios";
 import WeatherIcon from "./WeatherIcon";
 import CurrentTemperature from "./CurrentTemperature";
+import WeatherForecast from "./WeatherForecast";
 
 export default function CurrentForecast(props) {
   const [city, setCity] = useState(props.defaultCity);
@@ -66,7 +67,9 @@ export default function CurrentForecast(props) {
           </div>
           <div className="temp-now">
             <h1>
-              <div className="city-searched text-capitalize">{weather.cityName}</div>
+              <div className="city-searched text-capitalize">
+                {weather.cityName}
+              </div>
             </h1>
             <ul>
               <li>
@@ -77,10 +80,9 @@ export default function CurrentForecast(props) {
             <div className="row">
               <div className="col-6">
                 <span className="current-weather-icon float-left">
-                  <WeatherIcon code={weather.icon} />
+                  <WeatherIcon code={weather.icon} size={58} />
                 </span>
                 <CurrentTemperature fahrenheit={weather.temperature} />
-                
               </div>
               <div className="col-6 current-weather-description">
                 <ul className="details">
@@ -88,6 +90,7 @@ export default function CurrentForecast(props) {
                   <li>Wind speed: {weather.wind} mph</li>
                 </ul>
               </div>
+              <WeatherForecast />
             </div>
           </div>
         </div>
