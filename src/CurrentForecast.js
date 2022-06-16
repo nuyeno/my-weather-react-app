@@ -13,6 +13,7 @@ export default function CurrentForecast(props) {
 
   function showWeather(response) {
     setWeather({
+      coordinates: response.data.coord,
       temperature: Math.round(response.data.main.temp),
       description: response.data.weather[0].main,
       humidity: response.data.main.humidity,
@@ -90,7 +91,7 @@ export default function CurrentForecast(props) {
                   <li>Wind speed: {weather.wind} mph</li>
                 </ul>
               </div>
-              <WeatherForecast />
+              <WeatherForecast coordinates={weather.coordinates} />
             </div>
           </div>
         </div>
