@@ -1,11 +1,11 @@
 .search-city {
   margin: 10px auto;
   padding: 5px;
-  text-align: left;
+  text-align: center;
   border: 1px solid #e5e5e5;
   border-radius: 20px;
   background: white;
-  max-width: 50%;
+  max-width: 40%;
 }
 .search-button {
   margin: 10px 20px;
@@ -44,6 +44,7 @@
   border-radius: 35px;
   background: white;
   margin: 20px 60px 5px 100px;
+  padding-bottom: 10px;
 }
 .temp-now ul {
   text-align: left;
